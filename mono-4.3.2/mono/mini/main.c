@@ -48,7 +48,10 @@ main (void)
 int
 main (int argc, char* argv[])
 {
-	//mono_build_date = build_date;
+	
+#if !define(PLATFORM_ANDROID)
+	mono_build_date = build_date;
+#endif
 	
 	return mono_main_with_options (argc, argv);
 }
