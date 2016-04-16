@@ -29,6 +29,16 @@
 
 G_BEGIN_DECLS
 
+#if defined(PLATFORM_ANDROID)
+#ifdef HAVE_SEEKDIR
+#undef HAVE_SEEKDIR
+#endif
+
+#ifdef HAVE_TELLDIR
+#undef HAVE_TELLDIR
+#endif
+#endif
+
 #if HAVE_SEEKDIR
 gint32
 Mono_Posix_Syscall_seekdir (void *dir, mph_off_t offset)
