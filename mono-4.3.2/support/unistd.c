@@ -178,6 +178,10 @@ Mono_Posix_Syscall_gethostname (char *buf, mph_size_t len)
 	return gethostname (buf, (size_t) len);
 }
 
+#if defined(PLATFORM_ANDROID)
+#undef HAVE_SETHOSTNAME
+#endif
+
 #if HAVE_SETHOSTNAME
 gint32
 Mono_Posix_Syscall_sethostname (const char *name, mph_size_t len)
