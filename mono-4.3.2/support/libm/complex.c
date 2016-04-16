@@ -16,7 +16,7 @@
 #include <math.h>
 
 #include "complex.h"
-#if !defined(PLATFORM_ANDROID)
+#ifndef PLATFORM_ANDROID
 #include "math_private.h"
 #endif
 
@@ -54,7 +54,7 @@ creal(double complex z)
 	return z;
 }
 
-#if !defined(PLATFORM_ANDROID)
+#ifndef PLATFORM_ANDROID
 double
 cimag(double complex z)
 {

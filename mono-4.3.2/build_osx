@@ -8,4 +8,5 @@ popd
 
 ./autogen.sh \
 --prefix=$DIR/build \
+--disable-boehm \
 --enable-nls=no
