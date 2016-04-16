@@ -16,9 +16,8 @@
 #include <math.h>
 
 #include "complex.h"
-#ifndef PLATFORM_ANDROID
-#include "math_private.h"
-#endif
+//#include "math_private.h"
+
 
 /*-
  * Copyright (c) 2004 Stefan Farfeleder
@@ -54,15 +53,13 @@ creal(double complex z)
 	return z;
 }
 
-#ifndef PLATFORM_ANDROID
-double
-cimag(double complex z)
-{
-	const double_complex z1 = { .f = z };
+// double
+// cimag(double complex z)
+// {
+// 	const double_complex z1 = { .f = z };
 
-	return (IMAGPART(z1));
-}
-#endif
+// 	return (IMAGPART(z1));
+// }
 
 /*
  * cabs() wrapper for hypot().

@@ -149,7 +149,7 @@ int helper_Mono_Posix_getpwnamuid (int mode, char *in_name, int in_uid,
 	*password = pwp->pw_passwd;
 	*uid = pwp->pw_uid;
 	*gid = pwp->pw_gid;
-#ifndef PLATFORM_ANDROID
+#if (!defined(PLATFORM_ANDROID))
 	*name = pwp->pw_gecos;
 #endif
 	*home = pwp->pw_dir;

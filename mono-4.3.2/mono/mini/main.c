@@ -49,7 +49,7 @@ int
 main (int argc, char* argv[])
 {
 	
-#ifndef PLATFORM_ANDROID
+#if (!defined(PLATFORM_ANDROID))
 	mono_build_date = build_date;
 #endif
 	
