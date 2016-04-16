@@ -122,6 +122,10 @@ Mono_Posix_Syscall_mincore (void *start, mph_size_t length, unsigned char *vec)
 	return mincore (start, (size_t) length, (void*)vec);
 }
 
+#if defined(PLATFORM_ANDROID)
+#undef HAVE_POSIX_MADVISE
+#endif
+
 #ifdef HAVE_POSIX_MADVISE
 gint32
 Mono_Posix_Syscall_posix_madvise (void *addr, mph_size_t len, gint32 advice)
