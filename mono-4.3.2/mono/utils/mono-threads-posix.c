@@ -22,7 +22,7 @@
 #include <errno.h>
 
 #if defined(PLATFORM_ANDROID) && !defined(TARGET_ARM64) && !defined(TARGET_AMD64)
-#define USE_TKILL_ON_ANDROID 1
+#undef USE_TKILL_ON_ANDROID
 #endif
 
 #ifdef USE_TKILL_ON_ANDROID
