@@ -1,0 +1,11 @@
+#!/bin/bash
+
+export DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+pushd eglib
+autoreconf -i
+popd
+
+./autogen.sh \
+--prefix=$DIR/build \
+--enable-nls=no

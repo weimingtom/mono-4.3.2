@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# Prereq : ANDROID_TOOLCHAIN=/usr/local/ndk-android-toolchain-xxx or similar
+
+# if $TOOLCHAIN is empty then exit
+if [ "$ANDROID_TOOLCHAIN" == "" ] || [ ! -d "$ANDROID_TOOLCHAIN" ]; then
+	echo "Failed to locate toolchain, please define $ANDROID_TOOLCHAIN"
+	exit 1
+fi
+
+export DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+export TOOLCHAIN=`cd $ANDROID_TOOLCHAIN && pwd`
+echo "TOOLCHAIN -> $TOOLCHAIN"
+
+export SYSROOT=$TOOLCHAIN/sysroot
+export PATH=$TOOLCHAIN/bin:$PATH
+export AR=$TOOLCHAIN/bin/arm-linux-androideabi-ar
+export CC="$TOOLCHAIN/bin/arm-linux-androideabi-gcc --sysroot=$SYSROOT"
+export CXX="$TOOLCHAIN/bin/arm-linux-androideabi-g++ --sysroot=$SYSROOT"
+export RANLIB=$TOOLCHAIN/bin/arm-linux-androideabi-ranlib
+
+pushd eglib
+autoreconf -i
+popd
+
+#
+./autogen.sh \
+--prefix=$DIR/build \
+--host=arm-linux-androideabi \
+--target=arm-linux-androideabi \
+--disable-mcs-build \
+--disable-boehm \
+--with-sigaltstack=no \
+--disable-parallel-mark \
+--disable-shared-handles \
+--with-sigaltstack=no \
+--with-tls=pthread \
+--with-glib=embedded \
+--enable-nls=no \
+--without-mcs-docs \
+CFLAGS="-DARM_FPU_NONE=1 -march=armv5te -mtune=xscale -msoft-float"
