@@ -149,7 +149,7 @@ int helper_Mono_Posix_getpwnamuid (int mode, char *in_name, int in_uid,
 	*password = pwp->pw_passwd;
 	*uid = pwp->pw_uid;
 	*gid = pwp->pw_gid;
-	*name = pwp->pw_gecos;
+	//*name = pwp->pw_gecos;
 	*home = pwp->pw_dir;
 	*shell = pwp->pw_shell;
 
