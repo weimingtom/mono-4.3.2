@@ -28,6 +28,8 @@ Mono_Posix_Syscall_L_cuserid (void)
 {
 #if defined(__APPLE__) || defined (__OpenBSD__)
 	return -1;
+#elif defined(PLATFORM_ANDROID)
+    return 9;  // FIXME 解决编译错误而已
 #else
 	return L_cuserid;
 #endif
