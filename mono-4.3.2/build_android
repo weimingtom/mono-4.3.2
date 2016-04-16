@@ -39,4 +39,6 @@ popd
 --with-glib=embedded \
 --enable-nls=no \
 --without-mcs-docs \
-CFLAGS="-DARM_FPU_NONE=1 -march=armv5te -mtune=xscale -msoft-float"
+CFLAGS="-DARM_FPU_VFP=1  -march=armv7-a -mfloat-abi=softfp -mfpu=vfp -DHAVE_ARMV6=1" \
+LDFLAGS="-Wl,--fix-cortex-a8"
+
